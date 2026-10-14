@@ -45,6 +45,19 @@ Easily deploy your own instance of Utopia using one of the platforms below:
 <br>
 [![Deploy To Koyeb](https://binbashbanana.github.io/deploy-buttons/buttons/remade/koyeb.svg)](https://app.koyeb.com/deploy?type=git&repository=github.com/UtopiaUnblocker/Utopia&branch=main&name=Utopia)
 
+### Netlify
+
+The repository's `netlify.toml` publishes the existing static files in `main/`
+without a build step. It overrides the Hugo build command and `public/` publish
+directory previously configured in Netlify. This project is not a Hugo site, so
+installing Hugo or setting `HUGO_VERSION` is not required.
+
+Netlify hosts the static interface only with this configuration. The proxy
+requires the long-running Node server in `index.mjs`, including its `/bare/`
+HTTP and WebSocket handlers. That server is not started by a static deployment.
+For a fully functional proxy, use a Node-capable host with the manual setup below
+or one of the deployment options above.
+
 ### Manual Setup
 ```bash
 # Clone the repository
